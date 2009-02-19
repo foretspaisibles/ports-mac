@@ -1,0 +1,34 @@
+# $Id: /local/ports-mac/ports-mac-trunk/devel/noweb/Portfile 68 2008-05-04T06:04:54.485334Z michael  $
+
+PortSystem		1.0
+
+name			caml-camomile
+version			0.7.1
+categories		devel
+maintainers		michael.grunewald@laposte.net
+description		Unicode library for OCaml
+long_description	This is a beta release of Camomile library package. \
+			Camomile is a comprehensive Unicode library for ocaml. \
+			Camomile provides Unicode character type, UTF-8, \
+			UTF-16, UTF-32 strings, conversion to/from about 200 \
+			encodings, collation and locale-sensitive case \
+			mappings, and more.
+homepage		http://camomile.org.invalid
+platforms		darwin
+master_sites		http://camomile.org.invalid
+distname		camomile-${version}
+checksums		md5 9b8cedcf91e9795f85aaade5a6f1c515 \
+			sha1 c89877203ea895bebe3f08bd2ce8fd2569bcf933 \
+			rmd160 6272341b0f5987e40d001bd81523173f3e38a168
+patchfiles		patch-Makefile.in
+
+use_bzip2		yes
+
+#
+# Depends
+#
+
+depends_build		port:ocaml
+depends_run         	port:ocaml
+
+destroot.destdir    	prefix=${destroot}${prefix}
