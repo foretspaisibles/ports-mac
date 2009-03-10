@@ -1,8 +1,33 @@
+Index: public/charEncoding.ml
+===================================================================
+--- public/charEncoding.ml	(.../vendor/camomile/current)	(révision 2)
++++ public/charEncoding.ml	(.../trunk/camomile)	(copie de travail)
+@@ -309,9 +309,14 @@
+   let flush () =    
+     let n = outchan#output b 0 !pos in
+       if n < !pos then
+-	failwith 
+-	  "CharEncoding.char_machine_of: \
++	(
++	  String.blit b n b 0 (!pos - n);
++	  pos := !pos - n;
++	  failwith 
++	    "CharEncoding.char_machine_of: \
+              Cannot flush the entire buffer";
++	) else
++	  pos := 0;
+       outchan#flush ();
+   in
+   let term () = 
 Index: public/oOChannel.ml
 ===================================================================
---- public/oOChannel.ml	(.../vendor/camomile/current)	(revision 2)
-+++ public/oOChannel.ml	(.../trunk/camomile)	(revision 8)
-@@ -92,9 +92,13 @@
+--- public/oOChannel.ml	(.../vendor/camomile/current)	(révision 2)
++++ public/oOChannel.ml	(.../trunk/camomile)	(copie de travail)
+@@ -89,12 +89,19 @@
+ 	let n = out#output b 0 1024 in
+ 	  String.blit b n b 0 (1024 - n);
+ 	  pos := 1024 - n
++
      method flush () =    
        let n = out#output b 0 !pos in
  	if n < !pos then 
@@ -10,12 +35,14 @@ Index: public/oOChannel.ml
 -	    "OOChannel.char_output_channel_of#flush: \
 -             Cannot flush the entire buffer";
 +	  (
-+	    String.blit b n b 0 (1024 - n);
-+	    pos := 1024 - n
-+	      failwith 
++	    String.blit b n b 0 (!pos - n);
++	    pos := !pos - n;
++	    failwith 
 +	      "OOChannel.char_output_channel_of#flush: \
 +               Cannot flush the entire buffer";
-+	  )
++	  ) else
++	    pos := 0
++
      method close_out () = 
        out#flush ();
        out#close_out () 
