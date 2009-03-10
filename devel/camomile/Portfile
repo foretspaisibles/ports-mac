@@ -21,6 +21,7 @@ checksums		md5 9b8cedcf91e9795f85aaade5a6f1c515 \
 			sha1 c89877203ea895bebe3f08bd2ce8fd2569bcf933 \
 			rmd160 6272341b0f5987e40d001bd81523173f3e38a168
 patchfiles		patch-Makefile.in
+			patch-fix-flush
 
 use_bzip2		yes
 
