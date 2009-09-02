@@ -27,11 +27,14 @@ patchfiles		patch-Makefile.diff
 depends_build		port:icon
 depends_run		port:icon
 
-use_configure		no
 universal_variant	no
 
 post-patch {
     reinplace "s|@PREFIX@|${prefix}|g" ${worksrcpath}/Makefile
+}
+
+configure {
+    system "./awkname awk"
 }
 
 livecheck.check		regex
