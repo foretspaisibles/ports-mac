@@ -5,7 +5,7 @@ PortSystem		1.0
 name			noweb
 version			2.11b
 categories		devel
-maintainers		michael.grunewald@laposte.net
+maintainers		laposte.net:michael.grunewald
 description		A Simple, Extensible Tool for Literate Programming
 long_description	Literate programming is the art of preparing programs \
 			for human readers.\
@@ -16,30 +16,24 @@ long_description	Literate programming is the art of preparing programs \
 			when compared with other literate-programming tools.
 homepage		http://www.eecs.harvard.edu/nr/noweb/
 platforms		darwin
-master_sites		http://www.eecs.harvard.edu/nr/noweb/dist/
-distfiles		noweb.tgz
+master_sites		${homepage}dist/
+extract.suffix		.tgz
 checksums		md5 1df580723497b2f2efde07646abf764c \
 			sha1 3b391c42f46dcb8a002b863fb2e483560a7da51d \
 			rmd160 01e4fbb636dfd0f6d117caa045cf105e49d25fca
-worksrcdir		${name}-${version}/src	
-patchfiles		patch-Makefile
+worksrcdir		${name}-${version}/src
+patchfiles		patch-Makefile.diff
 
-#
-# Depends
-#
+depends_build		port:icon
+depends_run		port:icon
 
-depends_build       port:icon
-depends_run         port:icon
+use_configure		no
+universal_variant	no
 
-#
-# Operations 
-#
+post-patch {
+    reinplace "s|@PREFIX@|${prefix}|g" ${worksrcpath}/Makefile
+}
 
-configure {}
-
-#pre-destroot {
-#  xinstall -d "${destroot}${prefix}/share/emacs/site-lisp"
-#  xinstall -d "${destroot}${prefix}/libexec/noweb"
-#}
-
-activate {}
+livecheck.check		regex
+livecheck.url		${homepage}dist/?C=M&O=D
+livecheck.regex		${name}-(\[0-9a-z.\]+)${extract.suffix}
