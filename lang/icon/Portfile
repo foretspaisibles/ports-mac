@@ -43,6 +43,10 @@ post-destroot {
   set doc_dir ${destroot}${prefix}/share/doc
   xinstall -d ${doc_dir}
   ln -s ../../libexec/${name}/doc ${doc_dir}/${name}-${version}
+  set man1_dir ${destroot}${prefix}/share/man/man1
+  xinstall -d ${man1_dir}
+  ln -s ../../../libexec/${name}/man/man1/icon.1 ${man1_dir}
+  ln -s ../../../libexec/${name}/man/man1/icont.1 ${man1_dir}
 }
 
 livecheck.type		regex
