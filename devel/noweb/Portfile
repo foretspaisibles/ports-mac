@@ -34,7 +34,7 @@ post-patch {
 }
 
 configure {
-    system "./awkname awk"
+    system "cd ${worksrcpath} && ./awkname awk"
 }
 
 livecheck.check		regex
