@@ -38,6 +38,6 @@ configure {
     system "cd ${worksrcpath} && ./awkname awk"
 }
 
-livecheck.check		regex
+livecheck.type		regex
 livecheck.url		${homepage}dist/?C=M&O=D
 livecheck.regex		${name}-(\[0-9a-z.\]+)${extract.suffix}
