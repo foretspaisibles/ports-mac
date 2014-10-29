@@ -1,0 +1,22 @@
+# $Id$
+
+PortSystem          1.0
+PortGroup bitbucket 1.0
+
+bitbucket.setup     michipili bsdowl 2.2 v
+categories          devel
+platforms           darwin
+maintainers         gmail.com:michipili
+description         BSD Owl Make Scripts
+license             CeCILL-B
+long_description    This collection of BSD Make directives can be used to   \
+                    create workflows including the following activities:    \
+                    Preparation and publication of TeX documents,           \
+                    Development of TeX macros with NOWEB, Development of    \
+                    OCaml software, Maintenance of a FreeBSD workstation    \
+                    configuration files, Preparation of a static website    \
+                    with ONSGMLS.
+checksums           rmd160 7b9077c9baa13adf9bd2a93bc02c860001fa5e67 \
+                    sha256 b92c7dbd961ff686174dde0fa0a363eb03c8518073cb6fdbe10cc9eb0ca87deb
+use_autoconf        yes
+build.type          bsd
