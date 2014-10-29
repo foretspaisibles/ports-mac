@@ -1,14 +1,18 @@
-# $Id$
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id: Portfile 125182 2014-09-09 02:53:08Z ryandesign@macports.org $
 
 PortSystem          1.0
-PortGroup bitbucket 1.0
+PortGroup           bitbucket 1.0
 
 bitbucket.setup     michipili bsdowl 2.2 v
 categories          devel
 platforms           darwin
 maintainers         gmail.com:michipili
-description         BSD Owl Make Scripts
 license             CeCILL-B
+supported_archs     noarch
+
+description         BSD Owl Make Scripts
+
 long_description    This collection of BSD Make directives can be used to   \
                     create workflows including the following activities:    \
                     Preparation and publication of TeX documents,           \
@@ -16,7 +20,12 @@ long_description    This collection of BSD Make directives can be used to   \
                     OCaml software, Maintenance of a FreeBSD workstation    \
                     configuration files, Preparation of a static website    \
                     with ONSGMLS.
-checksums           rmd160 7b9077c9baa13adf9bd2a93bc02c860001fa5e67 \
-                    sha256 b92c7dbd961ff686174dde0fa0a363eb03c8518073cb6fdbe10cc9eb0ca87deb
-use_autoconf        yes
+
+checksums           rmd160  e934151176d150151bb2f7848cf9e902f54471db \
+                    sha256  73f76a738188cac7d17ac8a039254d86e8d37ceef1a9d210040ba3fdbff3fa30
+
+bitbucket.tarball_from downloads
+distname            ${name}-${version}
+use_xz              yes
+
 build.type          bsd
