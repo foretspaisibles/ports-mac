@@ -48,6 +48,8 @@ post-destroot {
   ln -s ../../../libexec/${name}/man/man1/icont.1 ${man1_dir}
 }
 
+depends_lib		lib:libX11.6:xorg
+
 livecheck.type		regex
 livecheck.url		${homepage}status.htm
 livecheck.regex		Version (\[0-9.\]+)
